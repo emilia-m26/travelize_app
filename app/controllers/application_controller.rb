@@ -11,8 +11,16 @@ class ApplicationController < Sinatra::Base
     require 'sinatra/flash'
   end
 
+  # get "/" do
+  #   erb :layout
+  # end
+
   get "/" do
     erb :"travelers/login"
+  end
+
+  get "/signup" do
+    erb :"travelers/create_account"
   end
 
 
