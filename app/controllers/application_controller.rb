@@ -12,12 +12,9 @@ class ApplicationController < Sinatra::Base
   end
 
   get "/" do
-    erb :"goals/index"
+    erb :"travelers/login"
   end
 
-  get "/passport" do
-    erb :"destinations/passport"
-  end
 
   
 
