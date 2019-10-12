@@ -27,6 +27,9 @@ class ApplicationController < Sinatra::Base
     redirect "/login"
   end
   
+  get "/passport" do
+    erb :"destinations/passport"
+  end
 
   helpers do 
     def logged_in?
