@@ -1,3 +1,15 @@
+/* -- Error Messages --- */
+
+body {
+    .error_message {
+        background white;
+        text-align: center;
+        margin: 4px;
+        color: #ff0000;
+    }
+}
+
+
 /* -- Footer --- */
 
 footer.branding {

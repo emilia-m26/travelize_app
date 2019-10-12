@@ -10,7 +10,7 @@ class GoalsController < ApplicationController
 
     post "/goals" do
         #will create new goal
-        redirect to "/goals"
+        redirect "/goals"
     end
 
     get "/goals/:id" do

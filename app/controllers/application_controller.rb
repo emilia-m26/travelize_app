@@ -15,13 +15,29 @@ class ApplicationController < Sinatra::Base
   #   erb :layout
   # end
 
+  # get "/" do
+  #   erb :"travelers/login"
+  # end
+
+  # get "/signup" do
+  #   erb :"travelers/create_account"
+  # end
+
   get "/" do
-    erb :"travelers/login"
+    redirect "/login"
+  end
+  
+
+  helpers do 
+    def logged_in?
+      !!session[:traveler_id]
+    end
+
+    def current_user
+      Traveler.find_by_id(session[:traveler_id]) if logged_in?
+    end
   end
 
-  get "/signup" do
-    erb :"travelers/create_account"
-  end
 
 
   

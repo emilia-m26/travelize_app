@@ -5,5 +5,6 @@ if ActiveRecord::Migrator.needs_migration?
 end
 
 
+use TravelerController
 use GoalsController 
 run ApplicationController
