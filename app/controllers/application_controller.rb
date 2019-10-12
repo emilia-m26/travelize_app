@@ -31,6 +31,10 @@ class ApplicationController < Sinatra::Base
     erb :"destinations/passport"
   end
 
+  get "/travelers" do
+    erb :"travelers/travel_inspiration"
+  end
+
   helpers do 
     def logged_in?
       !!session[:traveler_id]
