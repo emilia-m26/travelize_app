@@ -44,9 +44,5 @@ class ApplicationController < Sinatra::Base
       Traveler.find_by_id(session[:traveler_id]) if logged_in?
     end
   end
-
-
-
   
-
 end

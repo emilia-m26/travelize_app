@@ -3,7 +3,7 @@ class GoalsController < ApplicationController
     #index action - displays all goals for one traveler
     get "/goals" do
         if logged_in?
-            @traveler = current_user
+            @traveler = current_user #has helper method
     
             @goals = @traveler.goals
             #binding.pry
@@ -54,10 +54,10 @@ class GoalsController < ApplicationController
         
         params[:goal][:complete] = params[:goal][:complete]? true : false
 
-        if @goal.update(params[:goal])
+        if @goal.update(params[:goal]) #if successfully updated, redirect to goals
             redirect "/goals"
         else
-            redirect "/goals/#{@goal.id}/edit"
+            redirect "/goals/#{@goal.id}/edit" #if not successful, redirect to try again
         end
     end
 
