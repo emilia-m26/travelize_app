@@ -5,8 +5,9 @@ class TravelerController < ApplicationController
       end
     
     post '/signup' do
-      traveler = Traveler.new(params)
+      traveler = Traveler.new(params[:name], params[:email], params[:password])
       traveler.save
+      binding.pry
       if traveler.save
         session[:traveler_id] = traveler.id
         redirect "/goals"
@@ -25,7 +26,7 @@ class TravelerController < ApplicationController
          # figure out if the user exists db
         @traveler = Traveler.find_by(email:params[:email])
         # if they do exist verify password
-        if @traveler && @traveler.authenticate(params[:password])
+        if @traveler && @traveler.authenticate(password:params[:password])
             # set our sesssion hash and redirect to goals home 
           session[:traveler_id] = @traveler.id
           redirect '/goals'

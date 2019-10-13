@@ -18,27 +18,16 @@ class GoalsController < ApplicationController
         erb :"goals/create_goals"
     end
 
-    #create action - creates one goal
-    post "/goals" do
-        params[:complete] = params[:complete]? true : false
-        @goal = Goal.create(params)
-        if @goal.save
-            redirect "/goals/#{@goal.id}"  #will need to see how to add destinations to the goals
-        else
-            redirect "/goals/new"
-        end 
-    end
 
     #show action - displays one goal based on ID
     get "/goals/:id" do
         @goal = Goal.find_by(id:params[:id])
-       
+   
         if @goal
-            erb :"goals/display"
+            erb :"goals/show"
         else
             redirect '/goals'
         end
-        erb :"goals/show"
     end
 
     #edit action - display edit form based on id
@@ -46,15 +35,41 @@ class GoalsController < ApplicationController
         erb :"goals/edit_goals"
     end
 
+
+    #create action - creates one goal
+    post "/goals" do
+        params[:complete] = params[:complete]? true : false
+        @goal = Goal.new(params)
+        if @goal.save
+            redirect "/goals/#{@goal.id}"  #will need to see how to add destinations to the goals
+        else
+            redirect "/goals/new"
+        end 
+    end
+
+
     #update action - modify existing goal based on id
     patch "/goals/:id" do
-       #will pull info from edit_goals form and edit existing goal
+        @goal = Goal.find_by(id:params[:id])
+        
+        params[:goal][:complete] = params[:goal][:complete]? true : false
+
+        if @goal.update(params[:goal])
+            redirect "/goals"
+        else
+            redirect "/goals/#{@goal.id}/edit"
+        end
     end
 
     #delete action - deletes one goal based on id
     delete "goals/:id" do
-        #will delete goal
+        goal = Goal.find_by(id:params[:id])
+        if goal.destroy
+            redirect "/goals"
+        else
+            redirect "/goals/#{goal.id}"
+        end 
     end 
-      
+
   end
   
