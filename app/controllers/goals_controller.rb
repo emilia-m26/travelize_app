@@ -44,6 +44,8 @@ class GoalsController < ApplicationController
         if @goal.save
             redirect "/goals/#{@goal.id}"  #will need to see how to add destinations to the goals
         else
+            flash[:error] = "Oops! Goal not created. Please try again!"
+            #validates presence of info so that a blank goal cannot be created
             redirect "/goals/new"
         end 
     end

@@ -4,12 +4,16 @@
   <h1 class="display-4">Pack Your Bags!</h1>
   <p class="lead">Add a New Goal Below</p>
     <form action="/goals" method="POST">
-  <p>Goal Title: <input type="text" name="title"></p>  
-  <!-- saving for functionality to be added later <input type="checkbox" value="true" name="complete">-->
-  <p class="lead">
-  <input type="submit" class="btn btn-info" value="Create Goal">
-  </p>
-  </form>
+      <p>Goal Title: <input type="text" name="title"></p>  
+      <!-- saving for functionality to be added later <input type="checkbox" value="true" name="complete">-->
+      <p class="lead">
+      <input type="submit" class="btn btn-info" value="Create Goal"></p>
+      <div class='error_message'>
+      <% if !!flash[:error] %>
+        <%= flash[:error] %>
+      <% end %>
+  </div>
+    </form>
 </div>
 
 
