@@ -6,7 +6,7 @@ class GoalsController < ApplicationController
             @traveler = current_user #has helper method
     
             @goals = @traveler.goals
-            #binding.pry
+            binding.pry
             erb :"goals/home"
         else
             redirect "/login"
