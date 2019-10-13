@@ -35,6 +35,19 @@ class GoalsController < ApplicationController
         erb :"goals/edit_goals"
     end
 
+    #update action - modify existing goal based on id
+    patch "/goals/:id" do
+        @goal = Goal.find_by(id:params[:id])
+        #saving for future functionality of editing and completing an entire goal list
+        #params[:goal][:complete] = params[:goal][:complete]? true : false
+
+        if @goal.update(params[:goal]) #if successfully updated, redirect to goals
+            redirect "/goals"
+        else
+            redirect "/goals/#{@goal.id}/edit" #if not successful, redirect to try again
+        end
+    end
+
 
     #create action - creates one goal
     post "/goals" do
@@ -48,20 +61,6 @@ class GoalsController < ApplicationController
             #validates presence of info so that a blank goal cannot be created
             redirect "/goals/new"
         end 
-    end
-
-
-    #update action - modify existing goal based on id
-    patch "/goals/:id" do
-        @goal = Goal.find_by(id:params[:id])
-        #saving for future functionality of editing and completing an entire goal list
-        #params[:goal][:complete] = params[:goal][:complete]? true : false
-
-        if @goal.update(params[:goal]) #if successfully updated, redirect to goals
-            redirect "/goals"
-        else
-            redirect "/goals/#{@goal.id}/edit" #if not successful, redirect to try again
-        end
     end
 
     #delete action - deletes one goal based on id

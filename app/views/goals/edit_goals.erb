@@ -5,3 +5,15 @@
   <p class="lead">Can edit goal</p>
    
 </div>
+
+
+
+
+
+<form action="/goals/<%= @goal.id %>" method= "POST">
+<input type="hidden" name="_method" id="hidden" value="patch">
+<label for="title"> Goal: </label>
+<textarea name="goal[title]" cols="30" rows="10" ><%=@goal.title%></textarea>
+
+<input type="submit" value="Submit Changes" >
+</form>
