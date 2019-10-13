@@ -1,4 +1,4 @@
 class Destination < ActiveRecord::Base
-    belongs_to :goal
-    #has_many :travelers, through: :goals
+    has_many :goals
+    has_many :travelers, through: :goals
 end 
