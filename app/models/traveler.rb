@@ -5,7 +5,7 @@ class Traveler < ActiveRecord::Base
     has_many :destinations, through: :goals
 
     has_secure_password
-    validates_presence_of :name, :email, :password
-    #validates :email, presence: true, format: { with: /A[^@s] @[^@s] z/, allow_blank: true }
+    validates_presence_of :name, :password
+    validates :email, presence: true, format: { with: /A[^@s] @[^@s] z/, allow_blank: true }
     validates :email, uniqueness: true
 end 
