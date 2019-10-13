@@ -39,15 +39,15 @@ class GoalsController < ApplicationController
         @goal = Goal.find_by(id:params[:id])
         #saving for future functionality of editing and completing an entire goal list
         #params[:goal][:complete] = params[:goal][:complete]? true : false
-        if @goal && @goal.traveler == current_user
+        #if @goal && @goal.traveler == current_user
             if @goal.update(params[:title]) #if successfully updated, redirect to goals
                 redirect "/goals/#{@goal.id}"
             else
                 redirect "/goals/#{@goal.id}/edit" #if not successful, redirect to try again
             end
-        else
-            redirect "/login"
-        end 
+        #else
+            #redirect "/login"
+        #end 
     end
 
 

@@ -1,13 +1,10 @@
 Will show edit form
 
-<!DOCTYPE html>
-<html>
+
 <body>
-<body background="images/1976241.jpg">
 
-<h2>HTML Forms</h2>
 
-<form action="/goals/:id/edit" method="patch">
+<form action="/goals/:id" method="POST">
 <input type="hidden" name="_method" value="patch">
   Goal to Change: <br>
   <input type="text" name="goal[title]">
@@ -19,5 +16,5 @@ Will show edit form
 
 
 </body>
-</html>
+
 
