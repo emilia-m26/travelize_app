@@ -3,11 +3,24 @@
 <br>
 
 <div class="jumbotron">
-  <h1 class="display-4">My Goals</h1>
-  <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+  <h1 class="display-4">Hey, <%= @traveler.name.capitalize %>!</h1>
+  <p class="lead">Here is your list of Travel Goals.</p>
+  <p class="lead">Click on a Goal to see more details or to add/edit destinations of a goal.</p>
+
+  <p class="lead"> 
+
+    <ul>
+    <% @goals.each do |goal| %>
+      <li><a href="/goals"><%= goal.title %></a></li>
+    <% end %>
+    </ul></p>
+
   <hr class="my-4">
-  <p>Below will display buttons to create a new goal and redirect</p>
+  <p>Want to add a Goal to your list?  Click the button below.</p>
   <p class="lead">
     <a class="btn btn-info" href="/goals/new" role="button">Create New Goal</a>
   </p>
 </div>
+
+
+
