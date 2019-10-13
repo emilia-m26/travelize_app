@@ -38,7 +38,8 @@ class GoalsController < ApplicationController
 
     #create action - creates one goal
     post "/goals" do
-        params[:complete] = params[:complete]? true : false
+        #saving for future functionality of completing an entire goal list
+        #params[:complete] = params[:complete]? true : false
         @goal = Goal.new(params)
         if @goal.save
             redirect "/goals/#{@goal.id}"  #will need to see how to add destinations to the goals
@@ -51,8 +52,8 @@ class GoalsController < ApplicationController
     #update action - modify existing goal based on id
     patch "/goals/:id" do
         @goal = Goal.find_by(id:params[:id])
-        
-        params[:goal][:complete] = params[:goal][:complete]? true : false
+        #saving for future functionality of editing and completing an entire goal list
+        #params[:goal][:complete] = params[:goal][:complete]? true : false
 
         if @goal.update(params[:goal]) #if successfully updated, redirect to goals
             redirect "/goals"
