@@ -40,7 +40,7 @@ class GoalsController < ApplicationController
         #saving for future functionality of editing and completing an entire goal list
         #params[:goal][:complete] = params[:goal][:complete]? true : false
         #if @goal && @goal.traveler == current_user
-            if @goal.update(params[:title]) #if successfully updated, redirect to goals
+            if @goal.update(params[:goal]) #if successfully updated, redirect to goals
                 redirect "/goals/#{@goal.id}"
             else
                 redirect "/goals/#{@goal.id}/edit" #if not successful, redirect to try again
@@ -66,14 +66,14 @@ class GoalsController < ApplicationController
     end
 
     #delete action - deletes one goal based on id
-    delete "goals/:id" do
+    delete "/goals/:id" do
         goal = Goal.find_by(id:params[:id])
         if goal.destroy
             redirect "/goals"
         else
-            redirect "/goals/#{todo.id}"
+            redirect "/goals/#{goal.id}"
         end 
-    end 
+    end
 
   end
   

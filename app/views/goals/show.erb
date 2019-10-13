@@ -1,8 +1,10 @@
 <h1>I will show a specific goal with destinations associated to goal</h1>
 
-<h2><%= @goal.title %></h2>
 
+<h2><%= @goal.title %></h2>
 <a href="/goals/<%=@goal.id%>/edit"><button> Edit </button></a>
 
-
+<form action="/goals/<%=@goal.id%>" method= "POST">
+<input type="hidden" name="_method" value="delete">
+<input type="submit" value="Delete">
 </form>

@@ -1,20 +1,23 @@
 Will show edit form
 
 
-<body>
 
 
-<form action="/goals/:id" method="POST">
+
+<form action="/goals/<%=@goal.id%>" method= "POST">
 <input type="hidden" name="_method" value="patch">
-  Goal to Change: <br>
-  <input type="text" name="goal[title]">
-  <br>
-  
-  <input type="submit" value="Change Goal">
-</form> 
+<label for="description"> Change Goal:</label>
+<textarea name="goal[title]"><%=@goal.title%></textarea>
+<input type="submit" >
+</form>
 
 
 
-</body>
-
+#edit form
+<form action="/goals/<%=@goal.id%>" method= "POST">
+<input type="hidden" name="_method" value="patch">
+<label for="description"> Goal:</label>
+<textarea name="goal[title]"><%=@goal.title%></textarea>
+<input type="submit" >
+</form>
 
