@@ -4,6 +4,7 @@ class GoalsController < ApplicationController
     get "/goals" do
         if logged_in?
             @traveler = current_user #has helper method
+    
             @goals = @traveler.goals
             #binding.pry
             erb :"goals/home"
@@ -22,10 +23,10 @@ class GoalsController < ApplicationController
     get "/goals/:id" do
         @goal = Goal.find_by(id:params[:id])
    
-        if @goal && @goal.traveler == current_user
+        if @goal
             erb :"goals/show"
         else
-            redirect '/login'
+            redirect '/goals'
         end
     end
 
@@ -39,6 +40,7 @@ class GoalsController < ApplicationController
         @goal = Goal.find_by(id:params[:id])
         #saving for future functionality of editing and completing an entire goal list
         #params[:goal][:complete] = params[:goal][:complete]? true : false
+<<<<<<< HEAD
         #if @goal && @goal.traveler == current_user
             if @goal.update(params[:goal]) #if successfully updated, redirect to goals
                 redirect "/goals/#{@goal.id}"
@@ -48,6 +50,14 @@ class GoalsController < ApplicationController
         #else
             #redirect "/login"
         #end 
+=======
+
+        if @goal.update(params[:goal]) #if successfully updated, redirect to goals
+            redirect "/goals"
+        else
+            redirect "/goals/#{@goal.id}/edit" #if not successful, redirect to try again
+        end
+>>>>>>> parent of 21d4cb5...  step closer to resolving edit issue, edit page appears, edit form submitting and returning to edit page because edit did not process
     end
 
 
