@@ -4,7 +4,6 @@ class GoalsController < ApplicationController
     get "/goals" do
         if logged_in?
             @traveler = current_user #has helper method
-    
             @goals = @traveler.goals
             #binding.pry
             erb :"goals/home"
@@ -23,10 +22,10 @@ class GoalsController < ApplicationController
     get "/goals/:id" do
         @goal = Goal.find_by(id:params[:id])
    
-        if @goal
+        if @goal && @goal.traveler == current_user
             erb :"goals/show"
         else
-            redirect '/goals'
+            redirect '/login'
         end
     end
 
@@ -40,12 +39,15 @@ class GoalsController < ApplicationController
         @goal = Goal.find_by(id:params[:id])
         #saving for future functionality of editing and completing an entire goal list
         #params[:goal][:complete] = params[:goal][:complete]? true : false
-
-        if @goal.update(params[:goal]) #if successfully updated, redirect to goals
-            redirect "/goals"
+        if @goal && @goal.traveler == current_user
+            if @goal.update(params[:title]) #if successfully updated, redirect to goals
+                redirect "/goals/#{@goal.id}"
+            else
+                redirect "/goals/#{@goal.id}/edit" #if not successful, redirect to try again
+            end
         else
-            redirect "/goals/#{@goal.id}/edit" #if not successful, redirect to try again
-        end
+            redirect "/login"
+        end 
     end
 
 
@@ -69,7 +71,7 @@ class GoalsController < ApplicationController
         if goal.destroy
             redirect "/goals"
         else
-            redirect "/goals/#{goal.id}"
+            redirect "/goals/#{todo.id}"
         end 
     end 
 

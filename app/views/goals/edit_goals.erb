@@ -1,19 +1,23 @@
-<h1>I will edit an existing goal</h1>
+Will show edit form
 
-<div class="jumbotron">
-  <h1 class="display-4">Change of Plans...</h1>
-  <p class="lead">Can edit goal</p>
-   
-</div>
+<!DOCTYPE html>
+<html>
+<body>
+<body background="images/1976241.jpg">
+
+<h2>HTML Forms</h2>
+
+<form action="/goals/:id/edit" method="patch">
+<input type="hidden" name="_method" value="patch">
+  Goal to Change: <br>
+  <input type="text" name="goal[title]">
+  <br>
+  
+  <input type="submit" value="Change Goal">
+</form> 
 
 
 
+</body>
+</html>
 
-
-<form action="/goals/<%= @goal.id %>" method= "POST">
-<input type="hidden" name="_method" id="hidden" value="patch">
-<label for="title"> Goal: </label>
-<textarea name="goal[title]" cols="30" rows="10" ><%=@goal.title%></textarea>
-
-<input type="submit" value="Submit Changes" >
-</form>
