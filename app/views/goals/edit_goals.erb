@@ -1,23 +1,11 @@
 Will show edit form
 
-<!DOCTYPE html>
-<html>
-<body>
-<body background="images/1976241.jpg">
-
-<h2>HTML Forms</h2>
-
-<form action="/goals/:id/edit" method="patch">
-<input type="hidden" name="_method" value="patch">
-  Goal to Change: <br>
-  <input type="text" name="goal[title]">
-  <br>
+<form action="/goals/<%=@goal.id%>" method="post">
+  <input type="hidden" name="_method" value="PATCH">
+  <input type="text" name="title" value="<%=@goal.title%>">
   
-  <input type="submit" value="Change Goal">
-</form> 
+  <input type="submit" value="Change Plans">
+</form>
 
 
-
-</body>
-</html>
 

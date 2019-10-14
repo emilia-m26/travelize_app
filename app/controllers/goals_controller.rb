@@ -1,5 +1,5 @@
 class GoalsController < ApplicationController
-  #testing revert
+  
     #index action - displays all goals for one traveler
     get "/goals" do
         if logged_in?
@@ -31,6 +31,7 @@ class GoalsController < ApplicationController
 
     #edit action - display edit form based on id
     get "/goals/:id/edit" do
+        @goal = Goal.find_by(id:params[:id])
         erb :"goals/edit_goals"
     end
 
@@ -39,15 +40,12 @@ class GoalsController < ApplicationController
         @goal = Goal.find_by(id:params[:id])
         #saving for future functionality of editing and completing an entire goal list
         #params[:goal][:complete] = params[:goal][:complete]? true : false
-        if @goal && @goal.traveler == current_user
-            if @goal.update(params[:title]) #if successfully updated, redirect to goals
-                redirect "/goals/#{@goal.id}"
-            else
-                redirect "/goals/#{@goal.id}/edit" #if not successful, redirect to try again
-            end
+        if @goal.update(params[:title]) #if successfully updated, redirect to goals
+            #binding.pry
+            redirect "/goals/#{@goal.id}"
         else
-            redirect "/login"
-        end 
+            redirect "/goals/#{@goal.id}/edit" #if not successful, redirect to try again
+        end
     end
 
 
@@ -67,11 +65,11 @@ class GoalsController < ApplicationController
 
     #delete action - deletes one goal based on id
     delete "goals/:id" do
-        goal = Goal.find_by(id:params[:id])
-        if goal.destroy
+        @goal = Goal.find_by(id:params[:id])
+        if @goal.destroy
             redirect "/goals"
         else
-            redirect "/goals/#{todo.id}"
+            redirect "/goals/#{@goal.id}"
         end 
     end 
 
