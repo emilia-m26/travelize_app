@@ -63,7 +63,7 @@ class GoalsController < ApplicationController
     end
 
     #delete action - deletes one goal based on id
-    delete "goals/:id" do
+    delete "/goals/:id" do
         @goal = Goal.find_by(id:params[:id])
         if @goal.destroy
             redirect "/goals"
