@@ -47,7 +47,6 @@ class GoalsController < ApplicationController
         end
     end
 
-
     #create action - creates one goal
     post "/goals" do
         #saving for future functionality of completing an entire goal list
@@ -57,7 +56,6 @@ class GoalsController < ApplicationController
             redirect "/goals/#{@goal.id}"  #will need to see how to add destinations to the goals
         else
             flash[:error] = "Oops! Goal not created. Please try again!"
-            #validates presence of info so that a blank goal cannot be created
             redirect "/goals/new"
         end 
     end
