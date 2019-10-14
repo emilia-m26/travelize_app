@@ -6,6 +6,8 @@ end
 
 #rake db:migrate SINATRA_ENV=development
 
+use Rack::MethodOverride
+
 use TravelerController
 use GoalsController 
 run ApplicationController
