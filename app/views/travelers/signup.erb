@@ -1,19 +1,25 @@
-<h1>I will create a new user</h1>
+<br>
+<br>
+<br>
 
-<h2> Welcome to Travelize! Join us below and begin tracking your traveling goals! </h2>
 
 <div class="jumbotron">
+<h2> Welcome to Travelize! </h2>
+<p class="lead text-muted">Join us below and begin tracking your traveling goals! </p>
+<br>
   <h3 class="display-5">Signup</h3>
-  <div class='error_message'>
-      <% if !!flash[:error] %>
-        <%= flash[:error] %>
-      <% end %>
-  </div>
-</div>
 
-<form action="/signup" method="POST">
+  <form action="/signup" method="POST">
   <input type="text" name="name" placeholder="Name">
   <input type="text" name="email" placeholder='Email Address'>
   <input type="password" name="password" placeholder="Password">
   <input type="submit" value="submit">
-</form>
+  </form>
+
+  <div class='error_message'>
+    <% if !!flash[:error] %>
+      <%= flash[:error] %>
+    <% end %>
+  </div>
+</div>
+

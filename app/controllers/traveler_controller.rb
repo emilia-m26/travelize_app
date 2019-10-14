@@ -6,7 +6,7 @@ class TravelerController < ApplicationController
     
     post '/signup' do
       @traveler = Traveler.new(params)
-      @traveler.save
+      #traveler.save
       #binding.pry
       if @traveler.save
         session[:traveler_id] = @traveler.id
