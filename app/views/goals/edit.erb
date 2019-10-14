@@ -5,7 +5,7 @@ Will show edit form
 
 <form action="/goals/<%=@goal.id%>" method= "POST">
 <input type="hidden" name="_method" value="patch">
-<label for="description"> Goal:</label>
-<textarea name="goal[title]"><%=@goal.title%></textarea>
+<label for="title"> Goal to Change:</label>
+<input type="text" name="goal[title]" placeholder="<%=@goal.title%>">
 <input type="submit" >
 </form>
