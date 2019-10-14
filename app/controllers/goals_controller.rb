@@ -31,7 +31,6 @@ class GoalsController < ApplicationController
     #edit action - display edit form based on id
     get "/goals/:id/edit" do
         @goal = Goal.find_by(id:params[:id])
-        #binding.pry
         erb :"goals/edit"
     end
 
@@ -41,7 +40,7 @@ class GoalsController < ApplicationController
         #saving for future functionality of editing and completing an entire goal list
         #params[:goal][:complete] = params[:goal][:complete]? true : false
         if @goal.update(params[:goal]) #if successfully updated, redirect to goals
-            redirect "/goals/#{@goal.id}"
+            redirect "/goals"
         else
             redirect "/goals/#{@goal.id}/edit" #if not successful, redirect to try again
         end
