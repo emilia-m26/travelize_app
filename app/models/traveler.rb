@@ -2,7 +2,7 @@ class Traveler < ActiveRecord::Base
     include ActiveModel::Validations
     
     has_many :goals
-    has_many :destinations, through: :goals
+    #has_many :destinations, through: :goals
 
     has_secure_password
     validates_presence_of :name, :password
