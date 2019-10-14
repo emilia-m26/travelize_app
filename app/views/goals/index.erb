@@ -21,5 +21,13 @@
     <a class="btn btn-info" href="/goals/new" role="button">Create New Goal</a>
   </p>
 </div>
+ _______
+ 
+<ul>
+<% @goals.each do |goal| %>
+    <li><a href="/goals/<%=goal.id%>"><%= goal.title %></a></li>
+<% end %>
+</ul>
+
 
 

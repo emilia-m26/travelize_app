@@ -1,0 +1,11 @@
+Will show edit form
+
+
+
+
+<form action="/goals/<%=@goal.id%>" method= "POST">
+<input type="hidden" name="_method" value="patch">
+<label for="description"> Goal:</label>
+<textarea name="goal[title]"><%=@goal.title%></textarea>
+<input type="submit" >
+</form>
