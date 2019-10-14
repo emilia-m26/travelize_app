@@ -37,11 +37,11 @@ class GoalsController < ApplicationController
 
     #update action - modify existing goal based on id
     patch "/goals/:id" do
-        @goal = Goal.find_by(params[:id])
+        @goal = Goal.find_by(id:params[:id])
         #saving for future functionality of editing and completing an entire goal list
         #params[:goal][:complete] = params[:goal][:complete]? true : false
         if @goal.update(params[:goal]) #if successfully updated, redirect to goals
-            redirect "/goals"
+            redirect "/goals/#{@goal.id}"
         else
             redirect "/goals/#{@goal.id}/edit" #if not successful, redirect to try again
         end
