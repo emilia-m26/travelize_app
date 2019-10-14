@@ -5,7 +5,6 @@ class GoalsController < ApplicationController
         if logged_in?
             @traveler = current_user #has helper method
             @goals = @traveler.goals
-            #binding.pry
             erb :"goals/home"
         else
             redirect "/login"
@@ -32,17 +31,17 @@ class GoalsController < ApplicationController
     #edit action - display edit form based on id
     get "/goals/:id/edit" do
         @goal = Goal.find_by(id:params[:id])
+        #binding.pry
         erb :"goals/edit_goals"
     end
 
     #update action - modify existing goal based on id
     patch "/goals/:id" do
-        @goal = Goal.find_by(id:params[:id])
+        @goal = Goal.find_by(params[:id])
         #saving for future functionality of editing and completing an entire goal list
         #params[:goal][:complete] = params[:goal][:complete]? true : false
-        if @goal.update(params[:title]) #if successfully updated, redirect to goals
-            #binding.pry
-            redirect "/goals/#{@goal.id}"
+        if @goal.update(params[:goal]) #if successfully updated, redirect to goals
+            redirect "/goals"
         else
             redirect "/goals/#{@goal.id}/edit" #if not successful, redirect to try again
         end
