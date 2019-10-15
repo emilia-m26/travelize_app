@@ -21,7 +21,7 @@ class GoalsController < ApplicationController
     get "/goals/:id" do
         @goal = Goal.find_by(id:params[:id])
    
-        if @goal #&& @goal.traveler == current_user
+        if @goal && @goal.traveler == current_user
             erb :"goals/show"
         else
             redirect '/login'
@@ -52,7 +52,7 @@ class GoalsController < ApplicationController
         #params[:complete] = params[:complete]? true : false
         @goal = Goal.new(params)
         if @goal.save
-            redirect "/goals/#{@goal.id}"  #will need to see how to add destinations to the goals
+            redirect "/goals"  #will need to see how to add destinations to the goals
         else
             flash[:error] = "Oops! Goal not created. Please try again!"
             redirect "/goals/new"
