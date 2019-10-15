@@ -22,10 +22,10 @@ class GoalsController < ApplicationController
     get "/goals/:id" do
         @goal = Goal.find_by(id:params[:id])
    
-        if @goal
+        if @goal && @goal.traveler == current_user
             erb :"goals/show"
         else
-            redirect '/goals'
+            redirect '/login'
         end
     end
 
