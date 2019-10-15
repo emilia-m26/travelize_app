@@ -1,13 +1,12 @@
 class GoalsController < ApplicationController
-  #testing revert
+  
     #index action - displays all goals for one traveler
     get "/goals" do
         if logged_in?
             @traveler = current_user #has helper method
     
             @goals = @traveler.goals
-            #binding.pry
-            erb :"goals/home"
+            erb :"goals/index"
         else
             redirect "/login"
         end
@@ -15,7 +14,7 @@ class GoalsController < ApplicationController
 
     #new action - displays form to create new goal
     get "/goals/new" do
-        erb :"goals/create_goals"
+        erb :"goals/new"
     end
 
 
@@ -32,7 +31,8 @@ class GoalsController < ApplicationController
 
     #edit action - display edit form based on id
     get "/goals/:id/edit" do
-        erb :"goals/edit_goals"
+        @goal = Goal.find_by(id:params[:id])
+        erb :"goals/edit"
     end
 
     #update action - modify existing goal based on id
@@ -40,7 +40,10 @@ class GoalsController < ApplicationController
         @goal = Goal.find_by(id:params[:id])
         #saving for future functionality of editing and completing an entire goal list
         #params[:goal][:complete] = params[:goal][:complete]? true : false
+<<<<<<< HEAD
 
+=======
+>>>>>>> master-1
         if @goal.update(params[:goal]) #if successfully updated, redirect to goals
             redirect "/goals"
         else
@@ -48,28 +51,41 @@ class GoalsController < ApplicationController
         end
     end
 
-
     #create action - creates one goal
     post "/goals" do
         #saving for future functionality of completing an entire goal list
         #params[:complete] = params[:complete]? true : false
-        @goal = Goal.new(params)
-        if @goal.save
-            redirect "/goals/#{@goal.id}"  #will need to see how to add destinations to the goals
-        else
-            flash[:error] = "Oops! Goal not created. Please try again!"
-            #validates presence of info so that a blank goal cannot be created
+        if params[:title] == ""
+            flash[:error_message] = "Oops! Goal not created. Please try again."
             redirect "/goals/new"
-        end 
+        else
+            traveler = current_user
+            @goal = Goal.create(:title => params[:title], :traveler_id => traveler.id)
+            #@goal = Goal.new(params)
+        # if @goal.save
+        #     redirect "/goals"  #will need to see how to add destinations to the goals
+        # else
+        #     flash[:error] = "Oops! Goal not created. Please try again!"
+        #     redirect "/goals/new"
+            redirect "/goals"
+        end
     end
 
     #delete action - deletes one goal based on id
     delete "/goals/:id" do
+<<<<<<< HEAD
         goal = Goal.find_by(id:params[:id])
         if goal.destroy
             redirect "/goals"
         else
             redirect "/goals/#{goal.id}"
+=======
+        @goal = Goal.find_by(id:params[:id])
+        if @goal.destroy
+            redirect "/goals"
+        else
+            redirect "/goals/#{@goal.id}"
+>>>>>>> master-1
         end 
     end
 
