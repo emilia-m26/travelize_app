@@ -16,6 +16,7 @@ Then execute:
 to create the database.
 
 Next, execute:
+
     $rake db:seed
 
 to add sample travelers and goals to the database.
