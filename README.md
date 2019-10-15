@@ -35,6 +35,13 @@ alex@example.com | password
 liz@example.com | password
 surfer@example.com | password
 
+|        Email        |  Password |
+| ------------------  | --------- |
+| emi@example.com     | password  |
+| alex@example.com    | password  |
+| liz@example.com     | password  |
+| surfer@example.com  | password  |
+
 
 ## Usage
 
