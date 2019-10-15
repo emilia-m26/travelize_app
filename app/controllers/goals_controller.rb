@@ -1,5 +1,5 @@
 class GoalsController < ApplicationController
-  
+  #testing revert
     #index action - displays all goals for one traveler
     get "/goals" do
         if logged_in?
