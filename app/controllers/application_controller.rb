@@ -15,10 +15,12 @@ class ApplicationController < Sinatra::Base
     redirect "/login"
   end
   
+  #for future functionality
   get "/passport" do
     erb :"destinations/passport"
   end
 
+  #for future functionality
   get "/travelers" do
     erb :"travelers/travel_inspiration"
   end

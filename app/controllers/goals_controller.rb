@@ -40,10 +40,10 @@ class GoalsController < ApplicationController
         @goal = Goal.find_by(id:params[:id])
         #saving for future functionality of editing and completing an entire goal list
         #params[:goal][:complete] = params[:goal][:complete]? true : false
-        if @goal.update(params[:goal]) #if successfully updated, redirect to goals
+        if @goal.update(params[:goal])
             redirect "/goals"
         else
-            redirect "/goals/#{@goal.id}/edit" #if not successful, redirect to try again
+            redirect "/goals/#{@goal.id}/edit"
         end
     end
 
@@ -57,12 +57,6 @@ class GoalsController < ApplicationController
         else
             traveler = current_user
             @goal = Goal.create(:title => params[:title], :traveler_id => traveler.id)
-            #@goal = Goal.new(params)
-        # if @goal.save
-        #     redirect "/goals"  #will need to see how to add destinations to the goals
-        # else
-        #     flash[:error] = "Oops! Goal not created. Please try again!"
-        #     redirect "/goals/new"
             redirect "/goals"
         end
     end
