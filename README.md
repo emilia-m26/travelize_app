@@ -27,6 +27,14 @@ Execute:
 
 and navigate to use a local server and navigate to localhost:9393 to preview the app.
 
+Below are sample signons to use:
+
+Email	            Password
+emi@example.com	    password
+alex@example.com	password
+liz@example.com     password
+surfer@example.com	password
+
 
 ## Usage
 
