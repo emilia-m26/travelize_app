@@ -4,6 +4,7 @@ class GoalsController < ApplicationController
     get "/goals" do
         if logged_in?
             @traveler = current_user #has helper method
+    
             @goals = @traveler.goals
             erb :"goals/index"
         else
@@ -21,10 +22,10 @@ class GoalsController < ApplicationController
     get "/goals/:id" do
         @goal = Goal.find_by(id:params[:id])
    
-        if @goal && @goal.traveler == current_user
+        if @goal
             erb :"goals/show"
         else
-            redirect '/login'
+            redirect '/goals'
         end
     end
 
@@ -74,7 +75,7 @@ class GoalsController < ApplicationController
         else
             redirect "/goals/#{@goal.id}"
         end 
-    end 
+    end
 
   end
   
