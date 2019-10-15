@@ -1,4 +1,4 @@
-# BrazilExperience
+# Travelize
 
 Welcome to the Travelize Sinatra Web App!  This app was created with the intention
 to create and track travel goals.
