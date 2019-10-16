@@ -1,12 +1,9 @@
 /* -- Error Messages --- */
 
-body {
-    .error_message {
-        background white;
-        text-align: center;
-        margin: 4px;
-        color: #ff0000;
-    }
+.error_message {
+    background white;
+    margin: 4px;
+    color: #ff0000;
 }
 
 
