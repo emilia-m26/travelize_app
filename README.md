@@ -1,7 +1,8 @@
 # Travelize
 
 Welcome to the Travelize Sinatra Web App!  This app was created with the intention
-to create and track travel goals.
+to create and track travel goals.  It is a basic MVC Sinatra project to fulfill project requirements at Flatiron School.
+Further functionality and development will continue in later projects.
 
 ## Installation
 
