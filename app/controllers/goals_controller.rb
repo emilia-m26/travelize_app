@@ -51,13 +51,14 @@ class GoalsController < ApplicationController
     post "/goals" do
         #saving for future functionality of completing an entire goal list
         #params[:complete] = params[:complete]? true : false
-        if params[:title] == ""
-            flash[:error_message] = "Oops! Goal not created. Please try again."
-            redirect "/goals/new"
-        else
-            traveler = current_user
-            @goal = Goal.create(:title => params[:title], :traveler_id => traveler.id)
+        @goal = current_user.goals.build(params)
+        if @goal.save
             redirect "/goals"
+        else
+            #traveler = current_user
+            #@goal = Goal.create(:title => params[:title], :traveler_id => traveler.id)
+            flash[:error] = "Oops! Goal not created. Please try again."
+            redirect "/goals/new"   
         end
     end
 
